@@ -21,7 +21,8 @@ pipeline
         {
             steps
             {
-                 sh script: 'mvn clean package'
+		    sh script: 'pwd'
+                 sh script: 'mvn -f /MyAwesomeAppclean/pom.xml package'
             }
          }
 	    
