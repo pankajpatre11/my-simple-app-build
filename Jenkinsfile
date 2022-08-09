@@ -35,8 +35,6 @@ pipeline
                 classifier: '',
 	        file: "target/springbootApp.jar",
                 type: 'jar'
-               # file: "target/maven-project-${mavenPom.version}.war",
-               # type: 'war'
               ]
             ],
             credentialsId: 'nexusid1',
