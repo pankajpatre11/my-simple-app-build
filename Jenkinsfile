@@ -22,7 +22,7 @@ pipeline
             steps
             {
 		    sh script: 'pwd'
-                 sh script: 'mvn -f /MyAwesomeAppclean/pom.xml clean package'
+                 sh script: 'mvn -f -Dfile=/MyAwesomeAppclean/pom.xml clean package'
             }
          }
 	    
