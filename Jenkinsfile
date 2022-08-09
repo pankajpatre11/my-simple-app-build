@@ -33,7 +33,7 @@ pipeline
           nexusArtifactUploader artifacts: [
               [artifactId: 'maven-project',
                 classifier: '',
-	        file: "target/springbootApp.jar",
+	        file: "MyAwesomeApp/target/springbootApp.jar",
                 type: 'jar'
               ]
             ],
