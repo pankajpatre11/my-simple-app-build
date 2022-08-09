@@ -25,7 +25,30 @@ pipeline
                  sh script: 'mvn -f MyAwesomeApp/pom.xml clean package'
             }
          }
-	    
+    stage('Upload War To Repo') {
+      steps {
+        script {
+          def mavenPom = readMavenPom file: 'MyAwesomeApp/pom.xml'
+          def nexusRepoName = mavenPom.version.endsWith("SNAPSHOT") ? "maven-snapshots" : "maven-releases"
+          nexusArtifactUploader artifacts: [
+              [artifactId: 'maven-project',
+                classifier: '',
+	        file: "target/springbootApp.jar",
+                type: 'jar'
+               # file: "target/maven-project-${mavenPom.version}.war",
+               # type: 'war'
+              ]
+            ],
+            credentialsId: 'nexusid1',
+            groupId: 'com.example',
+            nexusUrl: '54.226.187.187:8081',
+            nexusVersion: 'nexus3',
+            protocol: 'http',
+            repository: nexusRepoName,
+            version: "${mavenPom.version}"
+        }
+      }
+    }	    
 
 	  	    
     
